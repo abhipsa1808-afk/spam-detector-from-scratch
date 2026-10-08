@@ -1,0 +1,16 @@
+[project]
+name = "spam-detector-from-scratch"
+version = "0.1.0"
+description = "A spam message detector built from scratch with Naive Bayes in plain Python."
+requires-python = ">=3.10"
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["."]
+
+[tool.ruff]
+line-length = 100
+target-version = "py310"
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "W"]
