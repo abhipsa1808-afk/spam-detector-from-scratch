@@ -5,6 +5,9 @@ A spam message classifier where the learning algorithm is written in plain Pytho
 [![CI](https://github.com/abhipsa1808-afk/spam-detector-from-scratch/actions/workflows/ci.yml/badge.svg)](https://github.com/abhipsa1808-afk/spam-detector-from-scratch/actions/workflows/ci.yml)
 ![Python](https://img.shields.io/badge/python-3.10%2B-blue)
 ![License](https://img.shields.io/badge/license-MIT-green)
+[![Live demo](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://spam-detector-from-scratch.streamlit.app)
+
+**[Try the live demo](https://spam-detector-from-scratch.streamlit.app)** (it may take a few seconds to wake up if nobody has used it recently)
 
 | | |
 |---|---|
@@ -85,6 +88,7 @@ Nobody told the model which words matter. These rankings come only from counting
 - **The data is old and narrow.** The messages are English SMS, mostly from the UK and Singapore, collected before 2012. Modern scams, other languages and other platforms will look different.
 - **Word order is ignored.** "Free tonight? Call me" and "Call now, free prize" share words that mean different things. Naive Bayes sees only the words.
 - **The probabilities are overconfident.** The model treats words as independent, which they are not, so it often reports 99.9% when the honest figure is lower. The ranking of messages is more trustworthy than the exact percentage.
+- **The dataset leaves a fingerprint.** Two of the strongest "normal message" signals are `lt` and `gt`. They are leftovers of `&lt;#&gt;`, a marker used in this dataset to hide numbers in normal messages. The model has learned a quirk of the data there, not a fact about language, and it would not help on real messages.
 - **One train and test split.** The results come from a single fixed split, not cross-validation, so they would move slightly with a different split.
 
 ## Run it yourself
